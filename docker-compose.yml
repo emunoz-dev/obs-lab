@@ -1,0 +1,54 @@
+# I'm using 'podman-compose with sable version 1.0.3'
+
+
+version: "1.0.3" #Reference guide https://github.com/compose-spec/compose-spec/blob/main/spec.md
+
+
+services:
+  localstack:
+    image: localstack/localstack
+    container_name: localstack
+    ports:
+      - "127.0.0.1:4566:4566"
+      - "127.0.0.1:4567-4597:4567-4597"
+    networks:
+      - back-net
+    environment:
+      - SERVICES=s3,ec2,sns,cloudwatch
+      - DEBUG=${DEBUG-1 }
+      - DATA_DIR=/tmp/localstack/data
+      #- DOCKER_HOST=unix:///var/run/docker.sock #In my case i use podman. If you use docker uncomment this line
+      
+      
+      # Important: 
+        #For security only need to enable and expose the 'podman API socket' taking advantage of the native 
+        # features of 'rootless' in 'Podman'. It is required to run:
+          # systemctl --user start podman.socket # So, you can execute 'podman-compose start'
+      - DOCKER_HOST=unix://${XDG_RUNTIME_DIR}/podman/podman.sock  # If you use docker comment this line
+      
+      
+      - HOST_TMP_FOLDER=/tmp/localstack
+      - DEFAULT_REGION=eu-west-1
+    volumes:
+      - "${TMPDIR:-/tmp/localstack}:/var/lib/localstack"
+      #- "/var/run/docker.sock:/var/run/docker.sock" #In my case i use podman. If you use docker uncomment this line
+      - "${XDG_RUNTIME_DIR}/podman/podman.sock:/var/run/docker.sock" #Required in podman case: 'systemctl --user start podman.socket'
+  
+  admtools:
+    image: imgtools:1.0
+    build: ./admtools
+    container_name: admtools
+    networks:
+      - back-net
+    environment:
+      # Fake credentials, it's a requirement of Terragrunt/Terraform to be able work
+      - AWS_ACCESS_KEY_ID=LSIAQAAAAAAVNCBMPNSG
+      - AWS_SECRET_ACCESS_KEY=test
+      - AWS_DEFAULT_REGION=eu-west-1
+    volumes:
+      - "${PWD}:/root/"
+
+
+networks:
+  back-net:
+    name: back-net
