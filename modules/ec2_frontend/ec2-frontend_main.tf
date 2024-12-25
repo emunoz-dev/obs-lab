@@ -1,7 +1,7 @@
 module "ec2_frontend" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   #version = "2.15.0"
-  version = "2.15.0"
+  version = "5.7.1"
 
   count = var.ec2_frontend_nodes
 

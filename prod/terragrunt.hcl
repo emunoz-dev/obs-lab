@@ -5,7 +5,12 @@ locals {
 
 #Begin read and load terragrunt modules
 dependencies {
-  paths = ["${path_relative_to_include()}/ec2_frontend"]
+  paths = [
+    # first create an ec2 instance, this has a vpc dependency
+    "${path_relative_to_include()}/ec2_frontend",
+    # then create a cloudwatch alarm, but this have a sns dependency
+    "${path_relative_to_include()}/cloudwatch"
+  ]
 }
 
 

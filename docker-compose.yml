@@ -14,7 +14,7 @@ services:
     networks:
       - back-net
     environment:
-      - SERVICES=s3,ec2,sns,cloudwatch
+      - SERVICES=s3,ec2,sns,cloudwatch,secretsmanager,sts
       - DEBUG=${DEBUG-1 }
       - DATA_DIR=/tmp/localstack/data
       #- DOCKER_HOST=unix:///var/run/docker.sock #In my case i use podman. If you use docker uncomment this line
@@ -42,7 +42,7 @@ services:
       - back-net
     environment:
       # Fake credentials, it's a requirement of Terragrunt/Terraform to be able work
-      - AWS_ACCESS_KEY_ID=LSIAQAAAAAAVNCBMPNSG
+      - AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
       - AWS_SECRET_ACCESS_KEY=test
       - AWS_DEFAULT_REGION=eu-west-1
     volumes:

@@ -22,7 +22,7 @@ dependency "vpc" {
 }
 
 terraform {
-  #Load root directory of terragrunt and searh the terraform module
+  #Load root directory of terragrunt and search the terraform module
   source = "${get_parent_terragrunt_dir("base")}/modules/ec2_frontend"
 }
 
