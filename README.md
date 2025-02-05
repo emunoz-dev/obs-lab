@@ -102,10 +102,4 @@ aws --endpoint-url=http://localstack:4566 cloudwatch get-metric-statistics --nam
 ```
 
 
-### 2. Influx3.0 OSS
-- To proceed, it is necessary to create a DB in Influx. Connect to the "influx3-lab" container and run the
-following command:
-
-```bash
-influxdb3 create database obs-lab-db
-```
+### 3. GreptimeDB OSS
