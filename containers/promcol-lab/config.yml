@@ -1,0 +1,20 @@
+region: eu-west-1
+metrics:
+- aws_namespace: EC2
+  aws_metric_name: CPUUtilization
+  aws_dimensions: [InstanceId]
+  aws_statistics: [Average]
+
+#- aws_dimensions: [InstanceId]
+#  #- InstanceId
+#  #  value: i-b7116d71f34a744fa
+#    
+#  aws_metric_name: CPUUtilization
+#  #aws_namespace: AWS/EC2
+#  aws_namespace: EC2
+#  aws_statistics:
+#  - Average
+#  #aws_tag_select:
+#  ##  InstanceId: [i-b7116d71f34a744fa]
+#  #  resource_type_selection: ec2:instance
+#  #  resource_id_dimension: i-aa54280b70f78b651

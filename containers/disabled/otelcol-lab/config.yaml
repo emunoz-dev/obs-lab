@@ -1,0 +1,26 @@
+receivers:
+  awscloudwatchmetrics:
+    region: eu-west-1
+    poll_interval: 1m
+    metrics:
+      named:
+        - namespace: "AWS/EC2"
+          metric_name: "CPUUtilization"
+          period: "1m"
+          aws_aggregation: "Sum"
+          dimensions:
+            - Name: "InstanceId"
+              Value: "i-035e091c31292427a"
+
+processors:
+
+exporters:
+  debug:
+    verbosity: detailed
+
+service:
+  pipelines:
+    metrics:
+      receivers: [awscloudwatchmetrics]
+      processors: []
+      exporters: [debug]
