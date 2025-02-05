@@ -1,5 +1,7 @@
 # Solution
 The purpose of this code is to share the Terragrunt and Terraform code to create an observability lab in Localstack (AWS emulator in local). The laboratory contains code with different examples that can will be used in production scenarios.
+
+![](./diagrams/obs-lab.png)
 ## Requirements
 - Podman >= 3.4.2
 - Podman-compose >= 1.0.3
