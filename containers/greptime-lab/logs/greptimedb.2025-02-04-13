@@ -1,0 +1,51 @@
+2025-02-04T13:00:18.649733Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-04T13:00:51.605544Z  INFO cmd: Received SIGTERM, shutting down
+2025-02-04T13:00:51.605615Z  INFO servers::grpc: Shutdown grpc server
+2025-02-04T13:00:51.605628Z  INFO servers::server: Service GRPC_SERVER is shutdown!
+2025-02-04T13:00:51.605671Z  INFO servers::http: Shutdown HTTP server
+2025-02-04T13:00:51.605679Z  INFO servers::server: Service HTTP_SERVER is shutdown!
+2025-02-04T13:00:51.605846Z  INFO servers::server: Postgres server is shutdown.
+2025-02-04T13:00:51.605863Z  INFO servers::server: Service POSTGRES_SERVER is shutdown!
+2025-02-04T13:00:51.605874Z  INFO servers::server: MySQL server is shutdown.
+2025-02-04T13:00:51.605882Z  INFO servers::server: Service MYSQL_SERVER is shutdown!
+2025-02-04T13:00:51.606017Z  INFO common_procedure::local: LocalManager is stopped.
+2025-02-04T13:00:51.606373Z  INFO datanode::region_server: closed 0 regions
+2025-02-04T13:00:51.606398Z  INFO mito2::worker: Stop region worker group
+2025-02-04T13:00:51.606905Z  INFO mito2::worker: Stop region worker 0
+2025-02-04T13:00:51.606942Z  INFO mito2::worker: Stop region worker 1
+2025-02-04T13:00:51.606951Z  INFO mito2::worker: Stop region worker 2
+2025-02-04T13:00:51.606993Z  INFO mito2::worker: Stop region worker 3
+2025-02-04T13:00:51.607004Z  INFO mito2::worker: Stop region worker 4
+2025-02-04T13:00:51.607027Z  INFO mito2::worker: Stop region worker 5
+2025-02-04T13:00:51.607037Z  INFO mito2::worker: Stop region worker 6
+2025-02-04T13:00:51.607053Z  INFO mito2::worker: Stop region worker 7
+2025-02-04T13:00:51.607061Z  INFO mito2::worker: Stop region worker 8
+2025-02-04T13:00:51.607077Z  INFO mito2::worker: Stop region worker 9
+2025-02-04T13:00:51.607087Z  INFO mito2::worker: Stop region worker 10
+2025-02-04T13:00:51.607103Z  INFO mito2::worker: Stop region worker 11
+2025-02-04T13:00:51.607112Z  INFO mito2::worker: Stop region worker 12
+2025-02-04T13:00:51.607130Z  INFO mito2::worker: Stop region worker 13
+2025-02-04T13:00:51.607139Z  INFO mito2::worker: Stop region worker 14
+2025-02-04T13:00:51.607146Z  INFO mito2::worker: Exit region worker thread 1
+2025-02-04T13:00:51.607148Z  INFO mito2::worker: Exit region worker thread 2
+2025-02-04T13:00:51.607155Z  INFO mito2::worker: Stop region worker 15
+2025-02-04T13:00:51.607161Z  INFO mito2::worker: Exit region worker thread 0
+2025-02-04T13:00:51.607219Z  INFO mito2::worker: Exit region worker thread 3
+2025-02-04T13:00:51.607229Z  INFO mito2::worker: Exit region worker thread 5
+2025-02-04T13:00:51.607234Z  INFO mito2::worker: Exit region worker thread 6
+2025-02-04T13:00:51.607246Z  INFO mito2::worker: Exit region worker thread 7
+2025-02-04T13:00:51.607257Z  INFO mito2::worker: Exit region worker thread 8
+2025-02-04T13:00:51.607262Z  INFO mito2::worker: Exit region worker thread 4
+2025-02-04T13:00:51.607276Z  INFO mito2::worker: Exit region worker thread 9
+2025-02-04T13:00:51.607281Z  INFO mito2::worker: Exit region worker thread 10
+2025-02-04T13:00:51.607298Z  INFO mito2::worker: Exit region worker thread 13
+2025-02-04T13:00:51.607303Z  INFO mito2::worker: Exit region worker thread 12
+2025-02-04T13:00:51.607308Z  INFO mito2::worker: Exit region worker thread 14
+2025-02-04T13:00:51.607315Z  INFO mito2::worker: Exit region worker thread 15
+2025-02-04T13:00:51.607475Z  INFO mito2::worker: Exit region worker thread 11
+2025-02-04T13:00:51.608013Z  INFO puffin::puffin_manager::stager::bounded_stager: The delete routine for the bounded stager is terminated.
+2025-02-04T13:00:51.608059Z  INFO datanode::region_server: Region engine mito is stopped
+2025-02-04T13:00:51.608103Z  INFO datanode::region_server: Region engine metric is stopped
+2025-02-04T13:00:51.609360Z  INFO datanode::region_server: Region engine file is stopped
+2025-02-04T13:00:51.609382Z  INFO cmd::standalone: Datanode instance stopped.
+2025-02-04T13:00:51.609391Z  INFO cmd: Goodbye!
