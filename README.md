@@ -1,6 +1,11 @@
 # Solution
 The purpose of this code is to share the Terragrunt and Terraform code to create an observability lab in Localstack (AWS emulator in local). The laboratory contains code with different examples that can will be used in production scenarios.
 
+In one hand, this lab has two kinds of collectors, a prometheus for metrics data type and opentelemetry for 
+logs and traces. All data collected is going to send to GreptimeDB.
+
+GreptimeDB is a new tool for SRE and Observability implementations. This DBMS has a SQL engine, called Apache Data Fusion, that was written in Rust language. GreptimeDB can manage and save metrics, logs and traces. It can respond from queries in SQL or Promql.
+
 ![](./diagrams/obs-lab.png)
 ## Requirements
 - Podman >= 3.4.2
@@ -105,3 +110,13 @@ aws --endpoint-url=http://localstack:4566 cloudwatch get-metric-statistics --nam
 
 
 ### 3. GreptimeDB OSS
+
+Works but need updates, working in progress
+
+## 4. Opentelemetry
+
+Working in progress
+
+## 5. Grafana
+
+Working in progress
