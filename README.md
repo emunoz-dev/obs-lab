@@ -74,7 +74,7 @@ aws --endpoint-url=http://localstack:4566 cloudwatch describe-alarms
 
 ## Observability
 
-### 2. Prometheus collector & remote write
+### 2. Prometheus collector of metrics & remote write
 #### promcol-lab container
 The best way to get metrics from AWS Cloudwatch is by using Prometheus to achieve it. However, it has a bug when
 trying to fetch metrics from an EC2 instance on Localstack. But let's imagine it works.
@@ -111,9 +111,12 @@ aws --endpoint-url=http://localstack:4566 cloudwatch get-metric-statistics --nam
 
 ### 3. GreptimeDB OSS
 
-Works but need updates, working in progress
+There's no need to do anything because it automatically creates a DB and tables when the container starts with
+its entrypoint.
 
-## 4. Opentelemetry
+> File --> ./containers/greptime-lab/entrypoint.sh
+
+## 4. Opentelemetry collector of logs and traces & remote write
 
 Working in progress
 
