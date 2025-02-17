@@ -106,6 +106,12 @@ aws --endpoint-url=http://localstack:4566 cloudwatch list-metrics
 
 # Get datapoints of ec2 metric
 aws --endpoint-url=http://localstack:4566 cloudwatch get-metric-statistics --namespace EC2 --metric-name CPUUtilization --period 60 --start-time 1737969900 --end-time 1737971574 --statistics Maximum --dimensions Name=InstanceId,Value=i-aa54280b70f78b651
+
+# Check if was created the log-group
+ aws --endpoint-url=http://localstack:4566 logs describe-log-groups --log-group-name-prefix "obs-lab-logs"
+
+# Check if was created the log-stream
+aws --endpoint-url=http://localstack:4566 logs describe-log-streams --log-group-name "obs-lab-logs" 
 ```
 
 

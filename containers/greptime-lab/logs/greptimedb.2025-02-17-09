@@ -1,0 +1,1196 @@
+2025-02-17T09:00:33.054266Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-17T09:01:33.055206Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-17T09:02:33.056027Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-17T09:03:33.056980Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-17T09:04:33.058066Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-17T09:06:40.370371Z  INFO cmd: GreptimeDB version: 
+branch: 
+commit: ea0a347edcfe01f15a420b51ad673a161e209ad0
+clean: true
+version: 0.11.3
+2025-02-17T09:06:40.370381Z  INFO cmd: command line arguments
+2025-02-17T09:06:40.370389Z  INFO cmd: argument: greptime
+2025-02-17T09:06:40.370391Z  INFO cmd: argument: standalone
+2025-02-17T09:06:40.370393Z  INFO cmd: argument: start
+2025-02-17T09:06:40.370395Z  INFO cmd: argument: --http-addr
+2025-02-17T09:06:40.370406Z  INFO cmd: argument: 0.0.0.0:4000
+2025-02-17T09:06:40.370408Z  INFO cmd: argument: --rpc-addr
+2025-02-17T09:06:40.370410Z  INFO cmd: argument: 0.0.0.0:4001
+2025-02-17T09:06:40.370411Z  INFO cmd: argument: --mysql-addr
+2025-02-17T09:06:40.370413Z  INFO cmd: argument: 0.0.0.0:4002
+2025-02-17T09:06:40.370415Z  INFO cmd: argument: --postgres-addr
+2025-02-17T09:06:40.370417Z  INFO cmd: argument: 0.0.0.0:4003
+2025-02-17T09:06:40.370465Z  INFO cmd::standalone: Standalone start command: StartCommand {
+    http_addr: Some(
+        "0.0.0.0:4000",
+    ),
+    rpc_addr: Some(
+        "0.0.0.0:4001",
+    ),
+    mysql_addr: Some(
+        "0.0.0.0:4002",
+    ),
+    postgres_addr: Some(
+        "0.0.0.0:4003",
+    ),
+    influxdb_enable: false,
+    config_file: None,
+    tls_mode: None,
+    tls_cert_path: None,
+    tls_key_path: None,
+    user_provider: None,
+    env_prefix: "GREPTIMEDB_STANDALONE",
+    data_home: None,
+}
+2025-02-17T09:06:40.370690Z  INFO cmd::standalone: Standalone options: GreptimeOptions {
+    runtime: RuntimeOptions {
+        global_rt_size: 32,
+        compact_rt_size: 16,
+    },
+    plugins: [],
+    component: StandaloneOptions {
+        mode: Standalone,
+        enable_telemetry: true,
+        default_timezone: None,
+        http: HttpOptions {
+            addr: "0.0.0.0:4000",
+            timeout: 30s,
+            disable_dashboard: false,
+            body_limit: 64.0MiB,
+            is_strict_mode: false,
+        },
+        grpc: GrpcOptions {
+            addr: "0.0.0.0:4001",
+            hostname: "127.0.0.1",
+            max_recv_message_size: 512.0MiB,
+            max_send_message_size: 512.0MiB,
+            runtime_size: 8,
+            tls: TlsOption {
+                mode: Disable,
+                cert_path: "",
+                key_path: "",
+                watch: false,
+            },
+        },
+        mysql: MysqlOptions {
+            enable: true,
+            addr: "0.0.0.0:4002",
+            runtime_size: 2,
+            tls: TlsOption {
+                mode: Disable,
+                cert_path: "",
+                key_path: "",
+                watch: false,
+            },
+            reject_no_database: None,
+        },
+        postgres: PostgresOptions {
+            enable: true,
+            addr: "0.0.0.0:4003",
+            runtime_size: 2,
+            tls: TlsOption {
+                mode: Disable,
+                cert_path: "",
+                key_path: "",
+                watch: false,
+            },
+        },
+        opentsdb: OpentsdbOptions {
+            enable: true,
+        },
+        influxdb: InfluxdbOptions {
+            enable: true,
+        },
+        prom_store: PromStoreOptions {
+            enable: true,
+            with_metric_engine: true,
+        },
+        wal: RaftEngine(
+            RaftEngineConfig {
+                dir: None,
+                file_size: 128.0MiB,
+                purge_threshold: 1.0GiB,
+                purge_interval: 60s,
+                read_batch_size: 128,
+                sync_write: false,
+                enable_log_recycle: true,
+                prefill_log_files: false,
+                sync_period: None,
+                recovery_parallelism: 32,
+            },
+        ),
+        storage: StorageConfig {
+            data_home: "/tmp/greptimedb",
+            store: File(
+                FileConfig,
+            ),
+            providers: [],
+        },
+        metadata_store: KvBackendConfig {
+            file_size: 256.0MiB,
+            purge_threshold: 4.0GiB,
+        },
+        procedure: ProcedureConfig {
+            max_retry_times: 3,
+            retry_delay: 500ms,
+            max_metadata_value_size: None,
+        },
+        logging: LoggingOptions {
+            dir: "/tmp/greptimedb/logs",
+            level: None,
+            log_format: Text,
+            max_log_files: 720,
+            append_stdout: true,
+            enable_otlp_tracing: false,
+            otlp_endpoint: None,
+            tracing_sample_ratio: None,
+            slow_query: SlowQueryOptions {
+                enable: false,
+                threshold: None,
+                sample_ratio: None,
+            },
+        },
+        user_provider: None,
+        region_engine: [
+            Mito(
+                MitoConfig {
+                    num_workers: 16,
+                    worker_channel_size: 128,
+                    worker_request_batch_size: 64,
+                    manifest_checkpoint_distance: 10,
+                    compress_manifest: false,
+                    max_background_flushes: 16,
+                    max_background_compactions: 8,
+                    max_background_purges: 32,
+                    auto_flush_interval: 1800s,
+                    global_write_buffer_size: 1.0GiB,
+                    global_write_buffer_reject_size: 2.0GiB,
+                    sst_meta_cache_size: 128.0MiB,
+                    vector_cache_size: 512.0MiB,
+                    page_cache_size: 1.9GiB,
+                    selector_result_cache_size: 512.0MiB,
+                    enable_experimental_write_cache: false,
+                    experimental_write_cache_path: "",
+                    experimental_write_cache_size: 5.0GiB,
+                    experimental_write_cache_ttl: None,
+                    sst_write_buffer_size: 8.0MiB,
+                    parallel_scan_channel_size: 32,
+                    allow_stale_entries: false,
+                    index: IndexConfig {
+                        aux_path: "",
+                        staging_size: 2.0GiB,
+                        write_buffer_size: 8.0MiB,
+                        metadata_cache_size: 64.0MiB,
+                    },
+                    inverted_index: InvertedIndexConfig {
+                        create_on_flush: Auto,
+                        create_on_compaction: Auto,
+                        apply_on_query: Auto,
+                        mem_threshold_on_create: Auto,
+                        intermediate_path: "",
+                        write_buffer_size: 8.0MiB,
+                        metadata_cache_size: 64.0MiB,
+                        content_cache_size: 128.0MiB,
+                        content_cache_page_size: 64.0KiB,
+                    },
+                    fulltext_index: FulltextIndexConfig {
+                        create_on_flush: Auto,
+                        create_on_compaction: Auto,
+                        apply_on_query: Auto,
+                        mem_threshold_on_create: Auto,
+                        compress: true,
+                    },
+                    bloom_filter_index: BloomFilterConfig {
+                        create_on_flush: Auto,
+                        create_on_compaction: Auto,
+                        apply_on_query: Auto,
+                        mem_threshold_on_create: Auto,
+                    },
+                    memtable: TimeSeries,
+                    min_compaction_interval: 0ns,
+                },
+            ),
+            File(
+                EngineConfig,
+            ),
+        ],
+        export_metrics: ExportMetricsOption {
+            enable: false,
+            write_interval: 30s,
+            self_import: None,
+            remote_write: None,
+        },
+        tracing: TracingOptions,
+        init_regions_in_background: false,
+        init_regions_parallelism: 16,
+        max_in_flight_write_bytes: None,
+    },
+}
+2025-02-17T09:06:40.387456Z  INFO log: Recovering raft logs takes 15.84811ms    
+2025-02-17T09:06:40.387633Z  INFO common_procedure::store: The procedure state store path is: procedure/
+2025-02-17T09:06:40.390316Z  INFO datanode::store::fs: The file storage home is: /tmp/greptimedb/
+2025-02-17T09:06:40.390340Z  INFO datanode::store: Begin to clean temp storage directory: /tmp/greptimedb/.tmp/
+2025-02-17T09:06:40.390477Z  INFO datanode::store: Cleaned temp storage directory: /tmp/greptimedb/.tmp/
+2025-02-17T09:06:40.390973Z  INFO datanode::datanode: Creating raft-engine logstore with config: RaftEngineConfig { dir: None, file_size: 128.0MiB, purge_threshold: 1.0GiB, purge_interval: 60s, read_batch_size: 128, sync_write: false, enable_log_recycle: true, prefill_log_files: false, sync_period: None, recovery_parallelism: 32 } and storage path: /tmp/greptimedb/wal/
+2025-02-17T09:06:40.400767Z  WARN log: Truncating log file due to broken batch (queue=Append,seq=1,offset=12534147): Corruption: Log item offset is smaller than log batch header length    
+2025-02-17T09:06:40.405517Z  INFO log: Recovering raft logs takes 14.522005ms    
+2025-02-17T09:06:40.407478Z  INFO mito2::worker: Start region worker thread 1, init_check_delay: 173s
+2025-02-17T09:06:40.407487Z  INFO mito2::worker: Start region worker thread 0, init_check_delay: 43s
+2025-02-17T09:06:40.407513Z  INFO mito2::worker: Start region worker thread 3, init_check_delay: 125s
+2025-02-17T09:06:40.407529Z  INFO mito2::worker: Start region worker thread 8, init_check_delay: 39s
+2025-02-17T09:06:40.407530Z  INFO mito2::worker: Start region worker thread 7, init_check_delay: 162s
+2025-02-17T09:06:40.407530Z  INFO mito2::worker: Start region worker thread 6, init_check_delay: 142s
+2025-02-17T09:06:40.407539Z  INFO mito2::worker: Start region worker thread 9, init_check_delay: 118s
+2025-02-17T09:06:40.407540Z  INFO mito2::worker: Start region worker thread 10, init_check_delay: 10s
+2025-02-17T09:06:40.407542Z  INFO mito2::worker: Start region worker thread 11, init_check_delay: 64s
+2025-02-17T09:06:40.407546Z  INFO mito2::worker: Start region worker thread 13, init_check_delay: 16s
+2025-02-17T09:06:40.407549Z  INFO mito2::worker: Start region worker thread 14, init_check_delay: 65s
+2025-02-17T09:06:40.407548Z  INFO datanode::region_server: Region Engine mito is registered
+2025-02-17T09:06:40.407550Z  INFO mito2::worker: Start region worker thread 15, init_check_delay: 9s
+2025-02-17T09:06:40.407562Z  INFO datanode::region_server: Region Engine metric is registered
+2025-02-17T09:06:40.407565Z  INFO datanode::region_server: Region Engine file is registered
+2025-02-17T09:06:40.407602Z  INFO mito2::worker: Start region worker thread 5, init_check_delay: 47s
+2025-02-17T09:06:40.407611Z  INFO mito2::worker: Start region worker thread 2, init_check_delay: 8s
+2025-02-17T09:06:40.407622Z  INFO mito2::worker: Start region worker thread 4, init_check_delay: 17s
+2025-02-17T09:06:40.407679Z  INFO mito2::worker: Start region worker thread 12, init_check_delay: 24s
+2025-02-17T09:06:40.407791Z  INFO datanode::datanode: going to open 1 region(s)
+2025-02-17T09:06:40.408380Z  INFO mito2::worker::handle_open: Try to open region 4398063288320(1024, 16777216), worker: 0
+2025-02-17T09:06:40.408694Z  INFO mito2::manifest::manager: Checkpoint not found in data/greptime/promdb/1024/1024_0000000000/metadata/manifest/, build manifest from scratch
+2025-02-17T09:06:40.410718Z  INFO mito2::region::opener: Start replaying memtable at flushed_entry_id + 1: 1903 for region 4398063288320(1024, 16777216), manifest version: 1
+2025-02-17T09:06:40.410805Z  INFO log_store::raft_engine::log_store: Read logstore, namespace: 4398063288320, start: 1903, span: (None, None)
+2025-02-17T09:06:40.410923Z  INFO log_store::raft_engine::log_store: Namespace 4398063288320 obsoleted 0 entries, compacted index: 1902, span: (None, None)
+2025-02-17T09:06:40.410934Z  INFO mito2::region::opener: Replay WAL for region: 4398063288320(1024, 16777216), rows recovered: 0, last entry id: 1902
+2025-02-17T09:06:40.410961Z  INFO mito2::worker::handle_open: Region 4398063288320(1024, 16777216) is opened, worker: 0
+2025-02-17T09:06:40.411228Z  INFO mito2::worker::handle_open: Try to open region 4398046511104(1024, 0), worker: 0
+2025-02-17T09:06:40.412824Z  INFO mito2::manifest::manager: Recover region manifest data/greptime/promdb/1024/1024_0000000000/data/manifest/ from checkpoint version 30
+2025-02-17T09:06:40.413493Z  INFO mito2::region::opener: Start replaying memtable at flushed_entry_id + 1: 2794 for region 4398046511104(1024, 0), manifest version: 31
+2025-02-17T09:06:40.413512Z  INFO log_store::raft_engine::log_store: Read logstore, namespace: 4398046511104, start: 2794, span: (Some(2794), Some(2948))
+2025-02-17T09:06:40.508338Z  INFO log_store::raft_engine::log_store: Namespace 4398046511104 obsoleted 0 entries, compacted index: 2793, span: (Some(2794), Some(2948))
+2025-02-17T09:06:40.508350Z  INFO mito2::region::opener: Replay WAL for region: 4398046511104(1024, 0), rows recovered: 19129, last entry id: 2948
+2025-02-17T09:06:40.508366Z  INFO mito2::worker::handle_open: Region 4398046511104(1024, 0) is opened, worker: 0
+2025-02-17T09:06:40.508511Z  INFO handle_batch_open_requests: metric_engine::engine::open: Opened physical metric region 4398046511104(1024, 0)
+2025-02-17T09:06:40.547139Z  INFO handle_batch_open_requests: datanode::region_server: Region 4398046511104(1024, 0) is registered to engine metric
+2025-02-17T09:06:40.571048Z  INFO mito2::region: Convert region 4398063288320(1024, 16777216) to leader, previous role state: Follower
+2025-02-17T09:06:40.571061Z  INFO mito2::region: Convert region 4398046511104(1024, 0) to leader, previous role state: Follower
+2025-02-17T09:06:40.571067Z  INFO datanode::datanode: all regions are opened
+2025-02-17T09:06:40.594854Z  INFO flow::server: Flow Node Manager started
+2025-02-17T09:06:40.594912Z  INFO flow::server: Flow Worker started in new thread
+2025-02-17T09:06:40.596048Z  INFO cmd: Starting app: greptime-standalone
+2025-02-17T09:06:40.596066Z  INFO common_greptimedb_telemetry: Attention: GreptimeDB now collects anonymous usage data to help improve its roadmap and prioritize features.
+2025-02-17T09:06:40.596069Z  INFO common_greptimedb_telemetry: To learn more about this anonymous program and how to deactivate it if you don't want to participate, please visit the following URL: 
+2025-02-17T09:06:40.596071Z  INFO common_greptimedb_telemetry: https://docs.greptime.com/reference/telemetry
+2025-02-17T09:06:40.596096Z  INFO common_procedure::local: LocalManager is start.
+2025-02-17T09:06:40.596098Z  INFO common_procedure::local: LocalManager start to recover
+2025-02-17T09:06:40.596122Z  INFO common_procedure::local: LocalManager finish recovery, cost: 0ms
+2025-02-17T09:06:40.596246Z  INFO servers::server: Postgres server started at 0.0.0.0:4003
+2025-02-17T09:06:40.596246Z  INFO common_greptimedb_telemetry: reporting greptimedb version: StatisticData { os: "linux", version: "0.11.3", arch: "x86_64", mode: Standalone, git_commit: "ea0a347edcfe01f15a420b51ad673a161e209ad0", nodes: Some(1), uuid: "d5fc5811-5634-4257-9a8a-02d64d7ae316" }
+2025-02-17T09:06:40.596274Z  INFO servers::server: Service POSTGRES_SERVER is started at 0.0.0.0:4003
+2025-02-17T09:06:40.596309Z  INFO servers::grpc: gRPC server is bound to 0.0.0.0:4001
+2025-02-17T09:06:40.599664Z  INFO servers::server: Service GRPC_SERVER is started at 0.0.0.0:4001
+2025-02-17T09:06:40.599739Z  INFO servers::http: Enable dashboard service at '/dashboard'
+2025-02-17T09:06:40.599901Z  INFO servers::http: HTTP server is bound to 0.0.0.0:4000
+2025-02-17T09:06:40.599911Z  INFO servers::server: Service HTTP_SERVER is started at 0.0.0.0:4000
+2025-02-17T09:06:40.599933Z  INFO servers::server: MySQL server started at 0.0.0.0:4002
+2025-02-17T09:06:40.599939Z  INFO servers::server: Service MYSQL_SERVER is started at 0.0.0.0:4002
+2025-02-17T09:06:40.599972Z  INFO flow::adapter: Starting flownode manager's background task
+2025-02-17T09:07:40.407490Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-17T09:08:40.408793Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-17T09:09:40.410349Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-17T09:11:02.028882Z  INFO cmd: GreptimeDB version: 
+branch: 
+commit: ea0a347edcfe01f15a420b51ad673a161e209ad0
+clean: true
+version: 0.11.3
+2025-02-17T09:11:02.028895Z  INFO cmd: command line arguments
+2025-02-17T09:11:02.028901Z  INFO cmd: argument: greptime
+2025-02-17T09:11:02.028903Z  INFO cmd: argument: standalone
+2025-02-17T09:11:02.028905Z  INFO cmd: argument: start
+2025-02-17T09:11:02.028910Z  INFO cmd: argument: --http-addr
+2025-02-17T09:11:02.028921Z  INFO cmd: argument: 0.0.0.0:4000
+2025-02-17T09:11:02.028924Z  INFO cmd: argument: --rpc-addr
+2025-02-17T09:11:02.028928Z  INFO cmd: argument: 0.0.0.0:4001
+2025-02-17T09:11:02.028929Z  INFO cmd: argument: --mysql-addr
+2025-02-17T09:11:02.028931Z  INFO cmd: argument: 0.0.0.0:4002
+2025-02-17T09:11:02.028934Z  INFO cmd: argument: --postgres-addr
+2025-02-17T09:11:02.028935Z  INFO cmd: argument: 0.0.0.0:4003
+2025-02-17T09:11:02.028999Z  INFO cmd::standalone: Standalone start command: StartCommand {
+    http_addr: Some(
+        "0.0.0.0:4000",
+    ),
+    rpc_addr: Some(
+        "0.0.0.0:4001",
+    ),
+    mysql_addr: Some(
+        "0.0.0.0:4002",
+    ),
+    postgres_addr: Some(
+        "0.0.0.0:4003",
+    ),
+    influxdb_enable: false,
+    config_file: None,
+    tls_mode: None,
+    tls_cert_path: None,
+    tls_key_path: None,
+    user_provider: None,
+    env_prefix: "GREPTIMEDB_STANDALONE",
+    data_home: None,
+}
+2025-02-17T09:11:02.029243Z  INFO cmd::standalone: Standalone options: GreptimeOptions {
+    runtime: RuntimeOptions {
+        global_rt_size: 32,
+        compact_rt_size: 16,
+    },
+    plugins: [],
+    component: StandaloneOptions {
+        mode: Standalone,
+        enable_telemetry: true,
+        default_timezone: None,
+        http: HttpOptions {
+            addr: "0.0.0.0:4000",
+            timeout: 30s,
+            disable_dashboard: false,
+            body_limit: 64.0MiB,
+            is_strict_mode: false,
+        },
+        grpc: GrpcOptions {
+            addr: "0.0.0.0:4001",
+            hostname: "127.0.0.1",
+            max_recv_message_size: 512.0MiB,
+            max_send_message_size: 512.0MiB,
+            runtime_size: 8,
+            tls: TlsOption {
+                mode: Disable,
+                cert_path: "",
+                key_path: "",
+                watch: false,
+            },
+        },
+        mysql: MysqlOptions {
+            enable: true,
+            addr: "0.0.0.0:4002",
+            runtime_size: 2,
+            tls: TlsOption {
+                mode: Disable,
+                cert_path: "",
+                key_path: "",
+                watch: false,
+            },
+            reject_no_database: None,
+        },
+        postgres: PostgresOptions {
+            enable: true,
+            addr: "0.0.0.0:4003",
+            runtime_size: 2,
+            tls: TlsOption {
+                mode: Disable,
+                cert_path: "",
+                key_path: "",
+                watch: false,
+            },
+        },
+        opentsdb: OpentsdbOptions {
+            enable: true,
+        },
+        influxdb: InfluxdbOptions {
+            enable: true,
+        },
+        prom_store: PromStoreOptions {
+            enable: true,
+            with_metric_engine: true,
+        },
+        wal: RaftEngine(
+            RaftEngineConfig {
+                dir: None,
+                file_size: 128.0MiB,
+                purge_threshold: 1.0GiB,
+                purge_interval: 60s,
+                read_batch_size: 128,
+                sync_write: false,
+                enable_log_recycle: true,
+                prefill_log_files: false,
+                sync_period: None,
+                recovery_parallelism: 32,
+            },
+        ),
+        storage: StorageConfig {
+            data_home: "/tmp/greptimedb",
+            store: File(
+                FileConfig,
+            ),
+            providers: [],
+        },
+        metadata_store: KvBackendConfig {
+            file_size: 256.0MiB,
+            purge_threshold: 4.0GiB,
+        },
+        procedure: ProcedureConfig {
+            max_retry_times: 3,
+            retry_delay: 500ms,
+            max_metadata_value_size: None,
+        },
+        logging: LoggingOptions {
+            dir: "/tmp/greptimedb/logs",
+            level: None,
+            log_format: Text,
+            max_log_files: 720,
+            append_stdout: true,
+            enable_otlp_tracing: false,
+            otlp_endpoint: None,
+            tracing_sample_ratio: None,
+            slow_query: SlowQueryOptions {
+                enable: false,
+                threshold: None,
+                sample_ratio: None,
+            },
+        },
+        user_provider: None,
+        region_engine: [
+            Mito(
+                MitoConfig {
+                    num_workers: 16,
+                    worker_channel_size: 128,
+                    worker_request_batch_size: 64,
+                    manifest_checkpoint_distance: 10,
+                    compress_manifest: false,
+                    max_background_flushes: 16,
+                    max_background_compactions: 8,
+                    max_background_purges: 32,
+                    auto_flush_interval: 1800s,
+                    global_write_buffer_size: 1.0GiB,
+                    global_write_buffer_reject_size: 2.0GiB,
+                    sst_meta_cache_size: 128.0MiB,
+                    vector_cache_size: 512.0MiB,
+                    page_cache_size: 1.9GiB,
+                    selector_result_cache_size: 512.0MiB,
+                    enable_experimental_write_cache: false,
+                    experimental_write_cache_path: "",
+                    experimental_write_cache_size: 5.0GiB,
+                    experimental_write_cache_ttl: None,
+                    sst_write_buffer_size: 8.0MiB,
+                    parallel_scan_channel_size: 32,
+                    allow_stale_entries: false,
+                    index: IndexConfig {
+                        aux_path: "",
+                        staging_size: 2.0GiB,
+                        write_buffer_size: 8.0MiB,
+                        metadata_cache_size: 64.0MiB,
+                    },
+                    inverted_index: InvertedIndexConfig {
+                        create_on_flush: Auto,
+                        create_on_compaction: Auto,
+                        apply_on_query: Auto,
+                        mem_threshold_on_create: Auto,
+                        intermediate_path: "",
+                        write_buffer_size: 8.0MiB,
+                        metadata_cache_size: 64.0MiB,
+                        content_cache_size: 128.0MiB,
+                        content_cache_page_size: 64.0KiB,
+                    },
+                    fulltext_index: FulltextIndexConfig {
+                        create_on_flush: Auto,
+                        create_on_compaction: Auto,
+                        apply_on_query: Auto,
+                        mem_threshold_on_create: Auto,
+                        compress: true,
+                    },
+                    bloom_filter_index: BloomFilterConfig {
+                        create_on_flush: Auto,
+                        create_on_compaction: Auto,
+                        apply_on_query: Auto,
+                        mem_threshold_on_create: Auto,
+                    },
+                    memtable: TimeSeries,
+                    min_compaction_interval: 0ns,
+                },
+            ),
+            File(
+                EngineConfig,
+            ),
+        ],
+        export_metrics: ExportMetricsOption {
+            enable: false,
+            write_interval: 30s,
+            self_import: None,
+            remote_write: None,
+        },
+        tracing: TracingOptions,
+        init_regions_in_background: false,
+        init_regions_parallelism: 16,
+        max_in_flight_write_bytes: None,
+    },
+}
+2025-02-17T09:11:02.037803Z  INFO log: Recovering raft logs takes 7.829657ms    
+2025-02-17T09:11:02.037931Z  INFO common_procedure::store: The procedure state store path is: procedure/
+2025-02-17T09:11:02.040646Z  INFO datanode::store::fs: The file storage home is: /tmp/greptimedb/
+2025-02-17T09:11:02.040677Z  INFO datanode::store: Begin to clean temp storage directory: /tmp/greptimedb/.tmp/
+2025-02-17T09:11:02.040827Z  INFO datanode::store: Cleaned temp storage directory: /tmp/greptimedb/.tmp/
+2025-02-17T09:11:02.041387Z  INFO datanode::datanode: Creating raft-engine logstore with config: RaftEngineConfig { dir: None, file_size: 128.0MiB, purge_threshold: 1.0GiB, purge_interval: 60s, read_batch_size: 128, sync_write: false, enable_log_recycle: true, prefill_log_files: false, sync_period: None, recovery_parallelism: 32 } and storage path: /tmp/greptimedb/wal/
+2025-02-17T09:11:02.049329Z  WARN log: Truncating log file due to broken batch (queue=Append,seq=1,offset=12778771): Corruption: Log item offset is smaller than log batch header length    
+2025-02-17T09:11:02.054655Z  INFO log: Recovering raft logs takes 13.243712ms    
+2025-02-17T09:11:02.056704Z  INFO mito2::worker: Start region worker thread 2, init_check_delay: 174s
+2025-02-17T09:11:02.056712Z  INFO mito2::worker: Start region worker thread 3, init_check_delay: 15s
+2025-02-17T09:11:02.056718Z  INFO mito2::worker: Start region worker thread 0, init_check_delay: 163s
+2025-02-17T09:11:02.056733Z  INFO mito2::worker: Start region worker thread 1, init_check_delay: 141s
+2025-02-17T09:11:02.056740Z  INFO mito2::worker: Start region worker thread 4, init_check_delay: 161s
+2025-02-17T09:11:02.056747Z  INFO mito2::worker: Start region worker thread 7, init_check_delay: 128s
+2025-02-17T09:11:02.056747Z  INFO mito2::worker: Start region worker thread 9, init_check_delay: 154s
+2025-02-17T09:11:02.056748Z  INFO mito2::worker: Start region worker thread 8, init_check_delay: 66s
+2025-02-17T09:11:02.056760Z  INFO mito2::worker: Start region worker thread 10, init_check_delay: 18s
+2025-02-17T09:11:02.056801Z  INFO mito2::worker: Start region worker thread 6, init_check_delay: 137s
+2025-02-17T09:11:02.056811Z  INFO mito2::worker: Start region worker thread 11, init_check_delay: 139s
+2025-02-17T09:11:02.056820Z  INFO mito2::worker: Start region worker thread 12, init_check_delay: 175s
+2025-02-17T09:11:02.056826Z  INFO mito2::worker: Start region worker thread 5, init_check_delay: 27s
+2025-02-17T09:11:02.056845Z  INFO mito2::worker: Start region worker thread 13, init_check_delay: 39s
+2025-02-17T09:11:02.056859Z  INFO mito2::worker: Start region worker thread 14, init_check_delay: 0ns
+2025-02-17T09:11:02.056916Z  INFO datanode::region_server: Region Engine mito is registered
+2025-02-17T09:11:02.056941Z  INFO datanode::region_server: Region Engine metric is registered
+2025-02-17T09:11:02.056944Z  INFO datanode::region_server: Region Engine file is registered
+2025-02-17T09:11:02.057030Z  INFO mito2::worker: Start region worker thread 15, init_check_delay: 152s
+2025-02-17T09:11:02.057204Z  INFO datanode::datanode: going to open 1 region(s)
+2025-02-17T09:11:02.057845Z  INFO mito2::worker::handle_open: Try to open region 4398063288320(1024, 16777216), worker: 0
+2025-02-17T09:11:02.058182Z  INFO mito2::manifest::manager: Checkpoint not found in data/greptime/promdb/1024/1024_0000000000/metadata/manifest/, build manifest from scratch
+2025-02-17T09:11:02.060080Z  INFO mito2::region::opener: Start replaying memtable at flushed_entry_id + 1: 1903 for region 4398063288320(1024, 16777216), manifest version: 1
+2025-02-17T09:11:02.060114Z  INFO log_store::raft_engine::log_store: Read logstore, namespace: 4398063288320, start: 1903, span: (None, None)
+2025-02-17T09:11:02.060155Z  INFO log_store::raft_engine::log_store: Namespace 4398063288320 obsoleted 0 entries, compacted index: 1902, span: (None, None)
+2025-02-17T09:11:02.060161Z  INFO mito2::region::opener: Replay WAL for region: 4398063288320(1024, 16777216), rows recovered: 0, last entry id: 1902
+2025-02-17T09:11:02.060170Z  INFO mito2::worker::handle_open: Region 4398063288320(1024, 16777216) is opened, worker: 0
+2025-02-17T09:11:02.060315Z  INFO mito2::worker::handle_open: Try to open region 4398046511104(1024, 0), worker: 0
+2025-02-17T09:11:02.061184Z  INFO mito2::manifest::manager: Recover region manifest data/greptime/promdb/1024/1024_0000000000/data/manifest/ from checkpoint version 30
+2025-02-17T09:11:02.061700Z  INFO mito2::region::opener: Start replaying memtable at flushed_entry_id + 1: 2794 for region 4398046511104(1024, 0), manifest version: 31
+2025-02-17T09:11:02.061710Z  INFO log_store::raft_engine::log_store: Read logstore, namespace: 4398046511104, start: 2794, span: (Some(2794), Some(3019))
+2025-02-17T09:11:02.199353Z  INFO log_store::raft_engine::log_store: Namespace 4398046511104 obsoleted 0 entries, compacted index: 2793, span: (Some(2794), Some(3019))
+2025-02-17T09:11:02.199367Z  INFO mito2::region::opener: Replay WAL for region: 4398046511104(1024, 0), rows recovered: 27854, last entry id: 3019
+2025-02-17T09:11:02.199385Z  INFO mito2::worker::handle_open: Region 4398046511104(1024, 0) is opened, worker: 0
+2025-02-17T09:11:02.199561Z  INFO handle_batch_open_requests: metric_engine::engine::open: Opened physical metric region 4398046511104(1024, 0)
+2025-02-17T09:11:02.243840Z  INFO handle_batch_open_requests: datanode::region_server: Region 4398046511104(1024, 0) is registered to engine metric
+2025-02-17T09:11:02.269585Z  INFO mito2::region: Convert region 4398063288320(1024, 16777216) to leader, previous role state: Follower
+2025-02-17T09:11:02.269604Z  INFO mito2::region: Convert region 4398046511104(1024, 0) to leader, previous role state: Follower
+2025-02-17T09:11:02.269615Z  INFO datanode::datanode: all regions are opened
+2025-02-17T09:11:02.287246Z  INFO flow::server: Flow Node Manager started
+2025-02-17T09:11:02.287281Z  INFO flow::server: Flow Worker started in new thread
+2025-02-17T09:11:02.288633Z  INFO cmd: Starting app: greptime-standalone
+2025-02-17T09:11:02.288652Z  INFO common_greptimedb_telemetry: Attention: GreptimeDB now collects anonymous usage data to help improve its roadmap and prioritize features.
+2025-02-17T09:11:02.288655Z  INFO common_greptimedb_telemetry: To learn more about this anonymous program and how to deactivate it if you don't want to participate, please visit the following URL: 
+2025-02-17T09:11:02.288658Z  INFO common_greptimedb_telemetry: https://docs.greptime.com/reference/telemetry
+2025-02-17T09:11:02.288682Z  INFO common_procedure::local: LocalManager is start.
+2025-02-17T09:11:02.288685Z  INFO common_procedure::local: LocalManager start to recover
+2025-02-17T09:11:02.288717Z  INFO common_procedure::local: LocalManager finish recovery, cost: 0ms
+2025-02-17T09:11:02.288781Z  INFO common_greptimedb_telemetry: reporting greptimedb version: StatisticData { os: "linux", version: "0.11.3", arch: "x86_64", mode: Standalone, git_commit: "ea0a347edcfe01f15a420b51ad673a161e209ad0", nodes: Some(1), uuid: "d5fc5811-5634-4257-9a8a-02d64d7ae316" }
+2025-02-17T09:11:02.288859Z  INFO servers::http: Enable dashboard service at '/dashboard'
+2025-02-17T09:11:02.289073Z  INFO servers::http: HTTP server is bound to 0.0.0.0:4000
+2025-02-17T09:11:02.289106Z  INFO servers::server: Service HTTP_SERVER is started at 0.0.0.0:4000
+2025-02-17T09:11:02.289146Z  INFO servers::server: MySQL server started at 0.0.0.0:4002
+2025-02-17T09:11:02.289159Z  INFO servers::server: Service MYSQL_SERVER is started at 0.0.0.0:4002
+2025-02-17T09:11:02.289186Z  INFO servers::server: Postgres server started at 0.0.0.0:4003
+2025-02-17T09:11:02.289206Z  INFO servers::server: Service POSTGRES_SERVER is started at 0.0.0.0:4003
+2025-02-17T09:11:02.289246Z  INFO servers::grpc: gRPC server is bound to 0.0.0.0:4001
+2025-02-17T09:11:02.293303Z  INFO servers::server: Service GRPC_SERVER is started at 0.0.0.0:4001
+2025-02-17T09:11:02.293376Z  INFO flow::adapter: Starting flownode manager's background task
+2025-02-17T09:12:02.055532Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-17T09:13:02.056692Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-17T09:14:02.057917Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-17T09:15:02.058930Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-17T09:16:02.060109Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-17T09:17:02.060436Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-17T09:18:02.061926Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-17T09:19:02.062615Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-17T09:20:02.064030Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-17T09:21:02.064791Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-17T09:22:02.066185Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-17T09:23:02.067988Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-17T09:24:02.068356Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-17T09:25:02.070118Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-17T09:26:02.071406Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-17T09:27:02.072491Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-17T09:28:02.073352Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-17T09:29:33.152130Z  INFO cmd: GreptimeDB version: 
+branch: 
+commit: ea0a347edcfe01f15a420b51ad673a161e209ad0
+clean: true
+version: 0.11.3
+2025-02-17T09:29:33.152147Z  INFO cmd: command line arguments
+2025-02-17T09:29:33.152153Z  INFO cmd: argument: greptime
+2025-02-17T09:29:33.152157Z  INFO cmd: argument: standalone
+2025-02-17T09:29:33.152159Z  INFO cmd: argument: start
+2025-02-17T09:29:33.152161Z  INFO cmd: argument: --http-addr
+2025-02-17T09:29:33.152178Z  INFO cmd: argument: 0.0.0.0:4000
+2025-02-17T09:29:33.152183Z  INFO cmd: argument: --rpc-addr
+2025-02-17T09:29:33.152185Z  INFO cmd: argument: 0.0.0.0:4001
+2025-02-17T09:29:33.152187Z  INFO cmd: argument: --mysql-addr
+2025-02-17T09:29:33.152190Z  INFO cmd: argument: 0.0.0.0:4002
+2025-02-17T09:29:33.152192Z  INFO cmd: argument: --postgres-addr
+2025-02-17T09:29:33.152194Z  INFO cmd: argument: 0.0.0.0:4003
+2025-02-17T09:29:33.152256Z  INFO cmd::standalone: Standalone start command: StartCommand {
+    http_addr: Some(
+        "0.0.0.0:4000",
+    ),
+    rpc_addr: Some(
+        "0.0.0.0:4001",
+    ),
+    mysql_addr: Some(
+        "0.0.0.0:4002",
+    ),
+    postgres_addr: Some(
+        "0.0.0.0:4003",
+    ),
+    influxdb_enable: false,
+    config_file: None,
+    tls_mode: None,
+    tls_cert_path: None,
+    tls_key_path: None,
+    user_provider: None,
+    env_prefix: "GREPTIMEDB_STANDALONE",
+    data_home: None,
+}
+2025-02-17T09:29:33.152528Z  INFO cmd::standalone: Standalone options: GreptimeOptions {
+    runtime: RuntimeOptions {
+        global_rt_size: 32,
+        compact_rt_size: 16,
+    },
+    plugins: [],
+    component: StandaloneOptions {
+        mode: Standalone,
+        enable_telemetry: true,
+        default_timezone: None,
+        http: HttpOptions {
+            addr: "0.0.0.0:4000",
+            timeout: 30s,
+            disable_dashboard: false,
+            body_limit: 64.0MiB,
+            is_strict_mode: false,
+        },
+        grpc: GrpcOptions {
+            addr: "0.0.0.0:4001",
+            hostname: "127.0.0.1",
+            max_recv_message_size: 512.0MiB,
+            max_send_message_size: 512.0MiB,
+            runtime_size: 8,
+            tls: TlsOption {
+                mode: Disable,
+                cert_path: "",
+                key_path: "",
+                watch: false,
+            },
+        },
+        mysql: MysqlOptions {
+            enable: true,
+            addr: "0.0.0.0:4002",
+            runtime_size: 2,
+            tls: TlsOption {
+                mode: Disable,
+                cert_path: "",
+                key_path: "",
+                watch: false,
+            },
+            reject_no_database: None,
+        },
+        postgres: PostgresOptions {
+            enable: true,
+            addr: "0.0.0.0:4003",
+            runtime_size: 2,
+            tls: TlsOption {
+                mode: Disable,
+                cert_path: "",
+                key_path: "",
+                watch: false,
+            },
+        },
+        opentsdb: OpentsdbOptions {
+            enable: true,
+        },
+        influxdb: InfluxdbOptions {
+            enable: true,
+        },
+        prom_store: PromStoreOptions {
+            enable: true,
+            with_metric_engine: true,
+        },
+        wal: RaftEngine(
+            RaftEngineConfig {
+                dir: None,
+                file_size: 128.0MiB,
+                purge_threshold: 1.0GiB,
+                purge_interval: 60s,
+                read_batch_size: 128,
+                sync_write: false,
+                enable_log_recycle: true,
+                prefill_log_files: false,
+                sync_period: None,
+                recovery_parallelism: 32,
+            },
+        ),
+        storage: StorageConfig {
+            data_home: "/tmp/greptimedb",
+            store: File(
+                FileConfig,
+            ),
+            providers: [],
+        },
+        metadata_store: KvBackendConfig {
+            file_size: 256.0MiB,
+            purge_threshold: 4.0GiB,
+        },
+        procedure: ProcedureConfig {
+            max_retry_times: 3,
+            retry_delay: 500ms,
+            max_metadata_value_size: None,
+        },
+        logging: LoggingOptions {
+            dir: "/tmp/greptimedb/logs",
+            level: None,
+            log_format: Text,
+            max_log_files: 720,
+            append_stdout: true,
+            enable_otlp_tracing: false,
+            otlp_endpoint: None,
+            tracing_sample_ratio: None,
+            slow_query: SlowQueryOptions {
+                enable: false,
+                threshold: None,
+                sample_ratio: None,
+            },
+        },
+        user_provider: None,
+        region_engine: [
+            Mito(
+                MitoConfig {
+                    num_workers: 16,
+                    worker_channel_size: 128,
+                    worker_request_batch_size: 64,
+                    manifest_checkpoint_distance: 10,
+                    compress_manifest: false,
+                    max_background_flushes: 16,
+                    max_background_compactions: 8,
+                    max_background_purges: 32,
+                    auto_flush_interval: 1800s,
+                    global_write_buffer_size: 1.0GiB,
+                    global_write_buffer_reject_size: 2.0GiB,
+                    sst_meta_cache_size: 128.0MiB,
+                    vector_cache_size: 512.0MiB,
+                    page_cache_size: 1.9GiB,
+                    selector_result_cache_size: 512.0MiB,
+                    enable_experimental_write_cache: false,
+                    experimental_write_cache_path: "",
+                    experimental_write_cache_size: 5.0GiB,
+                    experimental_write_cache_ttl: None,
+                    sst_write_buffer_size: 8.0MiB,
+                    parallel_scan_channel_size: 32,
+                    allow_stale_entries: false,
+                    index: IndexConfig {
+                        aux_path: "",
+                        staging_size: 2.0GiB,
+                        write_buffer_size: 8.0MiB,
+                        metadata_cache_size: 64.0MiB,
+                    },
+                    inverted_index: InvertedIndexConfig {
+                        create_on_flush: Auto,
+                        create_on_compaction: Auto,
+                        apply_on_query: Auto,
+                        mem_threshold_on_create: Auto,
+                        intermediate_path: "",
+                        write_buffer_size: 8.0MiB,
+                        metadata_cache_size: 64.0MiB,
+                        content_cache_size: 128.0MiB,
+                        content_cache_page_size: 64.0KiB,
+                    },
+                    fulltext_index: FulltextIndexConfig {
+                        create_on_flush: Auto,
+                        create_on_compaction: Auto,
+                        apply_on_query: Auto,
+                        mem_threshold_on_create: Auto,
+                        compress: true,
+                    },
+                    bloom_filter_index: BloomFilterConfig {
+                        create_on_flush: Auto,
+                        create_on_compaction: Auto,
+                        apply_on_query: Auto,
+                        mem_threshold_on_create: Auto,
+                    },
+                    memtable: TimeSeries,
+                    min_compaction_interval: 0ns,
+                },
+            ),
+            File(
+                EngineConfig,
+            ),
+        ],
+        export_metrics: ExportMetricsOption {
+            enable: false,
+            write_interval: 30s,
+            self_import: None,
+            remote_write: None,
+        },
+        tracing: TracingOptions,
+        init_regions_in_background: false,
+        init_regions_parallelism: 16,
+        max_in_flight_write_bytes: None,
+    },
+}
+2025-02-17T09:29:33.161588Z  INFO log: Recovering raft logs takes 8.165877ms    
+2025-02-17T09:29:33.161725Z  INFO common_procedure::store: The procedure state store path is: procedure/
+2025-02-17T09:29:33.164838Z  INFO datanode::store::fs: The file storage home is: /tmp/greptimedb/
+2025-02-17T09:29:33.164868Z  INFO datanode::store: Begin to clean temp storage directory: /tmp/greptimedb/.tmp/
+2025-02-17T09:29:33.165006Z  INFO datanode::store: Cleaned temp storage directory: /tmp/greptimedb/.tmp/
+2025-02-17T09:29:33.165606Z  INFO datanode::datanode: Creating raft-engine logstore with config: RaftEngineConfig { dir: None, file_size: 128.0MiB, purge_threshold: 1.0GiB, purge_interval: 60s, read_batch_size: 128, sync_write: false, enable_log_recycle: true, prefill_log_files: false, sync_period: None, recovery_parallelism: 32 } and storage path: /tmp/greptimedb/wal/
+2025-02-17T09:29:33.173613Z  WARN log: Truncating log file due to broken batch (queue=Append,seq=1,offset=14252360): Corruption: Log item offset is smaller than log batch header length    
+2025-02-17T09:29:33.178729Z  INFO log: Recovering raft logs takes 13.067346ms    
+2025-02-17T09:29:33.182882Z  INFO datanode::region_server: Region Engine mito is registered
+2025-02-17T09:29:33.182923Z  INFO datanode::region_server: Region Engine metric is registered
+2025-02-17T09:29:33.182928Z  INFO datanode::region_server: Region Engine file is registered
+2025-02-17T09:29:33.182930Z  INFO mito2::worker: Start region worker thread 1, init_check_delay: 110s
+2025-02-17T09:29:33.182944Z  INFO mito2::worker: Start region worker thread 2, init_check_delay: 45s
+2025-02-17T09:29:33.182960Z  INFO mito2::worker: Start region worker thread 0, init_check_delay: 48s
+2025-02-17T09:29:33.182995Z  INFO mito2::worker: Start region worker thread 10, init_check_delay: 95s
+2025-02-17T09:29:33.182995Z  INFO mito2::worker: Start region worker thread 7, init_check_delay: 12s
+2025-02-17T09:29:33.182996Z  INFO mito2::worker: Start region worker thread 11, init_check_delay: 83s
+2025-02-17T09:29:33.183005Z  INFO mito2::worker: Start region worker thread 13, init_check_delay: 81s
+2025-02-17T09:29:33.183011Z  INFO mito2::worker: Start region worker thread 15, init_check_delay: 86s
+2025-02-17T09:29:33.183009Z  INFO mito2::worker: Start region worker thread 5, init_check_delay: 74s
+2025-02-17T09:29:33.183011Z  INFO mito2::worker: Start region worker thread 14, init_check_delay: 152s
+2025-02-17T09:29:33.183024Z  INFO mito2::worker: Start region worker thread 6, init_check_delay: 131s
+2025-02-17T09:29:33.183069Z  INFO mito2::worker: Start region worker thread 4, init_check_delay: 137s
+2025-02-17T09:29:33.183078Z  INFO mito2::worker: Start region worker thread 8, init_check_delay: 49s
+2025-02-17T09:29:33.183075Z  INFO mito2::worker: Start region worker thread 3, init_check_delay: 124s
+2025-02-17T09:29:33.183211Z  INFO datanode::datanode: going to open 1 region(s)
+2025-02-17T09:29:33.183258Z  INFO mito2::worker: Start region worker thread 9, init_check_delay: 21s
+2025-02-17T09:29:33.183355Z  INFO mito2::worker: Start region worker thread 12, init_check_delay: 131s
+2025-02-17T09:29:33.183981Z  INFO mito2::worker::handle_open: Try to open region 4398063288320(1024, 16777216), worker: 0
+2025-02-17T09:29:33.184527Z  INFO mito2::manifest::manager: Checkpoint not found in data/greptime/promdb/1024/1024_0000000000/metadata/manifest/, build manifest from scratch
+2025-02-17T09:29:33.187666Z  INFO mito2::region::opener: Start replaying memtable at flushed_entry_id + 1: 1903 for region 4398063288320(1024, 16777216), manifest version: 1
+2025-02-17T09:29:33.187724Z  INFO log_store::raft_engine::log_store: Read logstore, namespace: 4398063288320, start: 1903, span: (None, None)
+2025-02-17T09:29:33.187814Z  INFO log_store::raft_engine::log_store: Namespace 4398063288320 obsoleted 0 entries, compacted index: 1902, span: (None, None)
+2025-02-17T09:29:33.187824Z  INFO mito2::region::opener: Replay WAL for region: 4398063288320(1024, 16777216), rows recovered: 0, last entry id: 1902
+2025-02-17T09:29:33.187844Z  INFO mito2::worker::handle_open: Region 4398063288320(1024, 16777216) is opened, worker: 0
+2025-02-17T09:29:33.188111Z  INFO mito2::worker::handle_open: Try to open region 4398046511104(1024, 0), worker: 0
+2025-02-17T09:29:33.189602Z  INFO mito2::manifest::manager: Recover region manifest data/greptime/promdb/1024/1024_0000000000/data/manifest/ from checkpoint version 30
+2025-02-17T09:29:33.190142Z  INFO mito2::region::opener: Start replaying memtable at flushed_entry_id + 1: 2794 for region 4398046511104(1024, 0), manifest version: 31
+2025-02-17T09:29:33.190162Z  INFO log_store::raft_engine::log_store: Read logstore, namespace: 4398046511104, start: 2794, span: (Some(2794), Some(3444))
+2025-02-17T09:29:33.654929Z  INFO log_store::raft_engine::log_store: Namespace 4398046511104 obsoleted 0 entries, compacted index: 2793, span: (Some(2794), Some(3444))
+2025-02-17T09:29:33.654946Z  INFO mito2::region::opener: Replay WAL for region: 4398046511104(1024, 0), rows recovered: 80239, last entry id: 3444
+2025-02-17T09:29:33.654985Z  INFO mito2::worker::handle_open: Region 4398046511104(1024, 0) is opened, worker: 0
+2025-02-17T09:29:33.655161Z  INFO handle_batch_open_requests: metric_engine::engine::open: Opened physical metric region 4398046511104(1024, 0)
+2025-02-17T09:29:33.694174Z  INFO handle_batch_open_requests: datanode::region_server: Region 4398046511104(1024, 0) is registered to engine metric
+2025-02-17T09:29:33.718651Z  INFO mito2::region: Convert region 4398063288320(1024, 16777216) to leader, previous role state: Follower
+2025-02-17T09:29:33.718665Z  INFO mito2::region: Convert region 4398046511104(1024, 0) to leader, previous role state: Follower
+2025-02-17T09:29:33.718672Z  INFO datanode::datanode: all regions are opened
+2025-02-17T09:29:33.742370Z  INFO flow::server: Flow Node Manager started
+2025-02-17T09:29:33.742384Z  INFO flow::server: Flow Worker started in new thread
+2025-02-17T09:29:33.743705Z  INFO cmd: Starting app: greptime-standalone
+2025-02-17T09:29:33.743722Z  INFO common_greptimedb_telemetry: Attention: GreptimeDB now collects anonymous usage data to help improve its roadmap and prioritize features.
+2025-02-17T09:29:33.743724Z  INFO common_greptimedb_telemetry: To learn more about this anonymous program and how to deactivate it if you don't want to participate, please visit the following URL: 
+2025-02-17T09:29:33.743726Z  INFO common_greptimedb_telemetry: https://docs.greptime.com/reference/telemetry
+2025-02-17T09:29:33.743746Z  INFO common_procedure::local: LocalManager is start.
+2025-02-17T09:29:33.743749Z  INFO common_procedure::local: LocalManager start to recover
+2025-02-17T09:29:33.743776Z  INFO common_procedure::local: LocalManager finish recovery, cost: 0ms
+2025-02-17T09:29:33.743873Z  INFO common_greptimedb_telemetry: reporting greptimedb version: StatisticData { os: "linux", version: "0.11.3", arch: "x86_64", mode: Standalone, git_commit: "ea0a347edcfe01f15a420b51ad673a161e209ad0", nodes: Some(1), uuid: "d5fc5811-5634-4257-9a8a-02d64d7ae316" }
+2025-02-17T09:29:33.743927Z  INFO servers::server: MySQL server started at 0.0.0.0:4002
+2025-02-17T09:29:33.743968Z  INFO servers::server: Service MYSQL_SERVER is started at 0.0.0.0:4002
+2025-02-17T09:29:33.744003Z  INFO servers::server: Postgres server started at 0.0.0.0:4003
+2025-02-17T09:29:33.744023Z  INFO servers::server: Service POSTGRES_SERVER is started at 0.0.0.0:4003
+2025-02-17T09:29:33.744056Z  INFO servers::grpc: gRPC server is bound to 0.0.0.0:4001
+2025-02-17T09:29:33.747502Z  INFO servers::server: Service GRPC_SERVER is started at 0.0.0.0:4001
+2025-02-17T09:29:33.747583Z  INFO servers::http: Enable dashboard service at '/dashboard'
+2025-02-17T09:29:33.747758Z  INFO servers::http: HTTP server is bound to 0.0.0.0:4000
+2025-02-17T09:29:33.747769Z  INFO servers::server: Service HTTP_SERVER is started at 0.0.0.0:4000
+2025-02-17T09:29:33.747815Z  INFO flow::adapter: Starting flownode manager's background task
+2025-02-17T09:30:33.182192Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-17T09:31:33.182903Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-17T09:32:33.183746Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-17T09:33:33.184927Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-17T09:34:33.186283Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-17T09:35:33.187867Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-17T09:54:15.500493Z  INFO cmd: GreptimeDB version: 
+branch: 
+commit: ea0a347edcfe01f15a420b51ad673a161e209ad0
+clean: true
+version: 0.11.3
+2025-02-17T09:54:15.500504Z  INFO cmd: command line arguments
+2025-02-17T09:54:15.500509Z  INFO cmd: argument: greptime
+2025-02-17T09:54:15.500511Z  INFO cmd: argument: standalone
+2025-02-17T09:54:15.500514Z  INFO cmd: argument: start
+2025-02-17T09:54:15.500516Z  INFO cmd: argument: --http-addr
+2025-02-17T09:54:15.500528Z  INFO cmd: argument: 0.0.0.0:4000
+2025-02-17T09:54:15.500531Z  INFO cmd: argument: --rpc-addr
+2025-02-17T09:54:15.500533Z  INFO cmd: argument: 0.0.0.0:4001
+2025-02-17T09:54:15.500535Z  INFO cmd: argument: --mysql-addr
+2025-02-17T09:54:15.500536Z  INFO cmd: argument: 0.0.0.0:4002
+2025-02-17T09:54:15.500539Z  INFO cmd: argument: --postgres-addr
+2025-02-17T09:54:15.500543Z  INFO cmd: argument: 0.0.0.0:4003
+2025-02-17T09:54:15.500591Z  INFO cmd::standalone: Standalone start command: StartCommand {
+    http_addr: Some(
+        "0.0.0.0:4000",
+    ),
+    rpc_addr: Some(
+        "0.0.0.0:4001",
+    ),
+    mysql_addr: Some(
+        "0.0.0.0:4002",
+    ),
+    postgres_addr: Some(
+        "0.0.0.0:4003",
+    ),
+    influxdb_enable: false,
+    config_file: None,
+    tls_mode: None,
+    tls_cert_path: None,
+    tls_key_path: None,
+    user_provider: None,
+    env_prefix: "GREPTIMEDB_STANDALONE",
+    data_home: None,
+}
+2025-02-17T09:54:15.500887Z  INFO cmd::standalone: Standalone options: GreptimeOptions {
+    runtime: RuntimeOptions {
+        global_rt_size: 32,
+        compact_rt_size: 16,
+    },
+    plugins: [],
+    component: StandaloneOptions {
+        mode: Standalone,
+        enable_telemetry: true,
+        default_timezone: None,
+        http: HttpOptions {
+            addr: "0.0.0.0:4000",
+            timeout: 30s,
+            disable_dashboard: false,
+            body_limit: 64.0MiB,
+            is_strict_mode: false,
+        },
+        grpc: GrpcOptions {
+            addr: "0.0.0.0:4001",
+            hostname: "127.0.0.1",
+            max_recv_message_size: 512.0MiB,
+            max_send_message_size: 512.0MiB,
+            runtime_size: 8,
+            tls: TlsOption {
+                mode: Disable,
+                cert_path: "",
+                key_path: "",
+                watch: false,
+            },
+        },
+        mysql: MysqlOptions {
+            enable: true,
+            addr: "0.0.0.0:4002",
+            runtime_size: 2,
+            tls: TlsOption {
+                mode: Disable,
+                cert_path: "",
+                key_path: "",
+                watch: false,
+            },
+            reject_no_database: None,
+        },
+        postgres: PostgresOptions {
+            enable: true,
+            addr: "0.0.0.0:4003",
+            runtime_size: 2,
+            tls: TlsOption {
+                mode: Disable,
+                cert_path: "",
+                key_path: "",
+                watch: false,
+            },
+        },
+        opentsdb: OpentsdbOptions {
+            enable: true,
+        },
+        influxdb: InfluxdbOptions {
+            enable: true,
+        },
+        prom_store: PromStoreOptions {
+            enable: true,
+            with_metric_engine: true,
+        },
+        wal: RaftEngine(
+            RaftEngineConfig {
+                dir: None,
+                file_size: 128.0MiB,
+                purge_threshold: 1.0GiB,
+                purge_interval: 60s,
+                read_batch_size: 128,
+                sync_write: false,
+                enable_log_recycle: true,
+                prefill_log_files: false,
+                sync_period: None,
+                recovery_parallelism: 32,
+            },
+        ),
+        storage: StorageConfig {
+            data_home: "/tmp/greptimedb",
+            store: File(
+                FileConfig,
+            ),
+            providers: [],
+        },
+        metadata_store: KvBackendConfig {
+            file_size: 256.0MiB,
+            purge_threshold: 4.0GiB,
+        },
+        procedure: ProcedureConfig {
+            max_retry_times: 3,
+            retry_delay: 500ms,
+            max_metadata_value_size: None,
+        },
+        logging: LoggingOptions {
+            dir: "/tmp/greptimedb/logs",
+            level: None,
+            log_format: Text,
+            max_log_files: 720,
+            append_stdout: true,
+            enable_otlp_tracing: false,
+            otlp_endpoint: None,
+            tracing_sample_ratio: None,
+            slow_query: SlowQueryOptions {
+                enable: false,
+                threshold: None,
+                sample_ratio: None,
+            },
+        },
+        user_provider: None,
+        region_engine: [
+            Mito(
+                MitoConfig {
+                    num_workers: 16,
+                    worker_channel_size: 128,
+                    worker_request_batch_size: 64,
+                    manifest_checkpoint_distance: 10,
+                    compress_manifest: false,
+                    max_background_flushes: 16,
+                    max_background_compactions: 8,
+                    max_background_purges: 32,
+                    auto_flush_interval: 1800s,
+                    global_write_buffer_size: 1.0GiB,
+                    global_write_buffer_reject_size: 2.0GiB,
+                    sst_meta_cache_size: 128.0MiB,
+                    vector_cache_size: 512.0MiB,
+                    page_cache_size: 1.9GiB,
+                    selector_result_cache_size: 512.0MiB,
+                    enable_experimental_write_cache: false,
+                    experimental_write_cache_path: "",
+                    experimental_write_cache_size: 5.0GiB,
+                    experimental_write_cache_ttl: None,
+                    sst_write_buffer_size: 8.0MiB,
+                    parallel_scan_channel_size: 32,
+                    allow_stale_entries: false,
+                    index: IndexConfig {
+                        aux_path: "",
+                        staging_size: 2.0GiB,
+                        write_buffer_size: 8.0MiB,
+                        metadata_cache_size: 64.0MiB,
+                    },
+                    inverted_index: InvertedIndexConfig {
+                        create_on_flush: Auto,
+                        create_on_compaction: Auto,
+                        apply_on_query: Auto,
+                        mem_threshold_on_create: Auto,
+                        intermediate_path: "",
+                        write_buffer_size: 8.0MiB,
+                        metadata_cache_size: 64.0MiB,
+                        content_cache_size: 128.0MiB,
+                        content_cache_page_size: 64.0KiB,
+                    },
+                    fulltext_index: FulltextIndexConfig {
+                        create_on_flush: Auto,
+                        create_on_compaction: Auto,
+                        apply_on_query: Auto,
+                        mem_threshold_on_create: Auto,
+                        compress: true,
+                    },
+                    bloom_filter_index: BloomFilterConfig {
+                        create_on_flush: Auto,
+                        create_on_compaction: Auto,
+                        apply_on_query: Auto,
+                        mem_threshold_on_create: Auto,
+                    },
+                    memtable: TimeSeries,
+                    min_compaction_interval: 0ns,
+                },
+            ),
+            File(
+                EngineConfig,
+            ),
+        ],
+        export_metrics: ExportMetricsOption {
+            enable: false,
+            write_interval: 30s,
+            self_import: None,
+            remote_write: None,
+        },
+        tracing: TracingOptions,
+        init_regions_in_background: false,
+        init_regions_parallelism: 16,
+        max_in_flight_write_bytes: None,
+    },
+}
+2025-02-17T09:54:15.509748Z  INFO log: Recovering raft logs takes 8.094877ms    
+2025-02-17T09:54:15.509849Z  INFO common_procedure::store: The procedure state store path is: procedure/
+2025-02-17T09:54:15.512495Z  INFO datanode::store::fs: The file storage home is: /tmp/greptimedb/
+2025-02-17T09:54:15.512522Z  INFO datanode::store: Begin to clean temp storage directory: /tmp/greptimedb/.tmp/
+2025-02-17T09:54:15.512691Z  INFO datanode::store: Cleaned temp storage directory: /tmp/greptimedb/.tmp/
+2025-02-17T09:54:15.513367Z  INFO datanode::datanode: Creating raft-engine logstore with config: RaftEngineConfig { dir: None, file_size: 128.0MiB, purge_threshold: 1.0GiB, purge_interval: 60s, read_batch_size: 128, sync_write: false, enable_log_recycle: true, prefill_log_files: false, sync_period: None, recovery_parallelism: 32 } and storage path: /tmp/greptimedb/wal/
+2025-02-17T09:54:15.521084Z  WARN log: Truncating log file due to broken batch (queue=Append,seq=1,offset=14747312): Corruption: Log item offset is smaller than log batch header length    
+2025-02-17T09:54:15.526511Z  INFO log: Recovering raft logs takes 13.110893ms    
+2025-02-17T09:54:15.528966Z  INFO mito2::worker: Start region worker thread 2, init_check_delay: 25s
+2025-02-17T09:54:15.528977Z  INFO mito2::worker: Start region worker thread 4, init_check_delay: 157s
+2025-02-17T09:54:15.528982Z  INFO mito2::worker: Start region worker thread 3, init_check_delay: 124s
+2025-02-17T09:54:15.528990Z  INFO mito2::worker: Start region worker thread 1, init_check_delay: 126s
+2025-02-17T09:54:15.529006Z  INFO mito2::worker: Start region worker thread 9, init_check_delay: 58s
+2025-02-17T09:54:15.529005Z  INFO mito2::worker: Start region worker thread 8, init_check_delay: 75s
+2025-02-17T09:54:15.529009Z  INFO mito2::worker: Start region worker thread 10, init_check_delay: 6s
+2025-02-17T09:54:15.529008Z  INFO mito2::worker: Start region worker thread 0, init_check_delay: 59s
+2025-02-17T09:54:15.529014Z  INFO mito2::worker: Start region worker thread 11, init_check_delay: 67s
+2025-02-17T09:54:15.529015Z  INFO mito2::worker: Start region worker thread 12, init_check_delay: 66s
+2025-02-17T09:54:15.529027Z  INFO mito2::worker: Start region worker thread 5, init_check_delay: 145s
+2025-02-17T09:54:15.529038Z  INFO mito2::worker: Start region worker thread 13, init_check_delay: 99s
+2025-02-17T09:54:15.529078Z  INFO mito2::worker: Start region worker thread 6, init_check_delay: 96s
+2025-02-17T09:54:15.529082Z  INFO mito2::worker: Start region worker thread 14, init_check_delay: 155s
+2025-02-17T09:54:15.529091Z  INFO mito2::worker: Start region worker thread 15, init_check_delay: 68s
+2025-02-17T09:54:15.529129Z  INFO datanode::region_server: Region Engine mito is registered
+2025-02-17T09:54:15.529145Z  INFO datanode::region_server: Region Engine metric is registered
+2025-02-17T09:54:15.529149Z  INFO datanode::region_server: Region Engine file is registered
+2025-02-17T09:54:15.529205Z  INFO mito2::worker: Start region worker thread 7, init_check_delay: 166s
+2025-02-17T09:54:15.529447Z  INFO datanode::datanode: going to open 1 region(s)
+2025-02-17T09:54:15.530225Z  INFO mito2::worker::handle_open: Try to open region 4398063288320(1024, 16777216), worker: 0
+2025-02-17T09:54:15.530675Z  INFO mito2::manifest::manager: Checkpoint not found in data/greptime/promdb/1024/1024_0000000000/metadata/manifest/, build manifest from scratch
+2025-02-17T09:54:15.533372Z  INFO mito2::region::opener: Start replaying memtable at flushed_entry_id + 1: 1903 for region 4398063288320(1024, 16777216), manifest version: 1
+2025-02-17T09:54:15.533429Z  INFO log_store::raft_engine::log_store: Read logstore, namespace: 4398063288320, start: 1903, span: (None, None)
+2025-02-17T09:54:15.533475Z  INFO log_store::raft_engine::log_store: Namespace 4398063288320 obsoleted 0 entries, compacted index: 1902, span: (None, None)
+2025-02-17T09:54:15.533483Z  INFO mito2::region::opener: Replay WAL for region: 4398063288320(1024, 16777216), rows recovered: 0, last entry id: 1902
+2025-02-17T09:54:15.533495Z  INFO mito2::worker::handle_open: Region 4398063288320(1024, 16777216) is opened, worker: 0
+2025-02-17T09:54:15.533705Z  INFO mito2::worker::handle_open: Try to open region 4398046511104(1024, 0), worker: 0
+2025-02-17T09:54:15.534733Z  INFO mito2::manifest::manager: Recover region manifest data/greptime/promdb/1024/1024_0000000000/data/manifest/ from checkpoint version 30
+2025-02-17T09:54:15.535212Z  INFO mito2::region::opener: Start replaying memtable at flushed_entry_id + 1: 2794 for region 4398046511104(1024, 0), manifest version: 31
+2025-02-17T09:54:15.535234Z  INFO log_store::raft_engine::log_store: Read logstore, namespace: 4398046511104, start: 2794, span: (Some(2794), Some(3588))
+2025-02-17T09:54:16.091582Z  INFO log_store::raft_engine::log_store: Namespace 4398046511104 obsoleted 0 entries, compacted index: 2793, span: (Some(2794), Some(3588))
+2025-02-17T09:54:16.091597Z  INFO mito2::region::opener: Replay WAL for region: 4398046511104(1024, 0), rows recovered: 97959, last entry id: 3588
+2025-02-17T09:54:16.091611Z  INFO mito2::worker::handle_open: Region 4398046511104(1024, 0) is opened, worker: 0
+2025-02-17T09:54:16.091793Z  INFO handle_batch_open_requests: metric_engine::engine::open: Opened physical metric region 4398046511104(1024, 0)
+2025-02-17T09:54:16.137173Z  INFO handle_batch_open_requests: datanode::region_server: Region 4398046511104(1024, 0) is registered to engine metric
+2025-02-17T09:54:16.164319Z  INFO mito2::region: Convert region 4398063288320(1024, 16777216) to leader, previous role state: Follower
+2025-02-17T09:54:16.164334Z  INFO mito2::region: Convert region 4398046511104(1024, 0) to leader, previous role state: Follower
+2025-02-17T09:54:16.164341Z  INFO datanode::datanode: all regions are opened
+2025-02-17T09:54:16.182020Z  INFO flow::server: Flow Node Manager started
+2025-02-17T09:54:16.182035Z  INFO flow::server: Flow Worker started in new thread
+2025-02-17T09:54:16.183489Z  INFO cmd: Starting app: greptime-standalone
+2025-02-17T09:54:16.183510Z  INFO common_greptimedb_telemetry: Attention: GreptimeDB now collects anonymous usage data to help improve its roadmap and prioritize features.
+2025-02-17T09:54:16.183512Z  INFO common_greptimedb_telemetry: To learn more about this anonymous program and how to deactivate it if you don't want to participate, please visit the following URL: 
+2025-02-17T09:54:16.183514Z  INFO common_greptimedb_telemetry: https://docs.greptime.com/reference/telemetry
+2025-02-17T09:54:16.183560Z  INFO common_procedure::local: LocalManager is start.
+2025-02-17T09:54:16.183564Z  INFO common_procedure::local: LocalManager start to recover
+2025-02-17T09:54:16.183608Z  INFO common_procedure::local: LocalManager finish recovery, cost: 0ms
+2025-02-17T09:54:16.183674Z  INFO common_greptimedb_telemetry: reporting greptimedb version: StatisticData { os: "linux", version: "0.11.3", arch: "x86_64", mode: Standalone, git_commit: "ea0a347edcfe01f15a420b51ad673a161e209ad0", nodes: Some(1), uuid: "d5fc5811-5634-4257-9a8a-02d64d7ae316" }
+2025-02-17T09:54:16.183778Z  INFO servers::grpc: gRPC server is bound to 0.0.0.0:4001
+2025-02-17T09:54:16.187540Z  INFO servers::server: Service GRPC_SERVER is started at 0.0.0.0:4001
+2025-02-17T09:54:16.187637Z  INFO servers::http: Enable dashboard service at '/dashboard'
+2025-02-17T09:54:16.187866Z  INFO servers::http: HTTP server is bound to 0.0.0.0:4000
+2025-02-17T09:54:16.187885Z  INFO servers::server: Service HTTP_SERVER is started at 0.0.0.0:4000
+2025-02-17T09:54:16.187929Z  INFO servers::server: Postgres server started at 0.0.0.0:4003
+2025-02-17T09:54:16.187955Z  INFO servers::server: Service POSTGRES_SERVER is started at 0.0.0.0:4003
+2025-02-17T09:54:16.187986Z  INFO servers::server: MySQL server started at 0.0.0.0:4002
+2025-02-17T09:54:16.187998Z  INFO servers::server: Service MYSQL_SERVER is started at 0.0.0.0:4002
+2025-02-17T09:54:16.188038Z  INFO flow::adapter: Starting flownode manager's background task
+2025-02-17T09:55:15.527560Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-17T09:56:15.528554Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-17T09:57:15.529670Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-17T09:58:15.530785Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-17T09:59:15.531338Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []

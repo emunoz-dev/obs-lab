@@ -1,0 +1,52 @@
+2025-02-15T09:00:06.519507Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-15T09:01:06.520709Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-15T09:02:06.521488Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-15T09:03:06.522781Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-15T09:04:06.523327Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-15T09:05:06.524615Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-15T09:06:06.525478Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-15T09:07:06.526525Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-15T09:08:06.527838Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-15T09:09:06.528659Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-15T09:10:06.529625Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-15T09:11:06.530506Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-15T09:12:06.532010Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-15T09:13:06.532466Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-15T09:14:06.533716Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-15T09:15:06.535106Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-15T09:16:06.536688Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-15T09:16:10.634858Z  INFO mito2::flush: Successfully flush memtables, region: 4398063288320(1024, 16777216), reason: Periodically, files: [FileId(fb8974fb-83bb-40b0-8ba9-720501bf6acb)], cost: 0.075587993s
+2025-02-15T09:16:10.634901Z  INFO mito2::flush: Applying RegionEdit { files_to_add: [FileMeta { region_id: 4398063288320(1024, 16777216), file_id: FileId(fb8974fb-83bb-40b0-8ba9-720501bf6acb), time_range: (0::Millisecond, 0::Millisecond), level: 0, file_size: 14905, available_indexes: [InvertedIndex], index_file_size: 14043, num_rows: 1902, num_row_groups: 1, sequence: Some(1902) }], files_to_remove: [], compaction_time_window: None, flushed_entry_id: Some(1902), flushed_sequence: Some(1902) } to region 4398063288320(1024, 16777216)
+2025-02-15T09:16:10.639752Z  INFO mito2::flush: Successfully update manifest version to 1, region: 4398063288320(1024, 16777216), reason: Periodically
+2025-02-15T09:16:10.643865Z  INFO mito2::worker::handle_flush: Region 4398063288320(1024, 16777216) flush finished, tries to bump wal to 1902
+2025-02-15T09:16:10.643984Z  INFO log_store::raft_engine::log_store: Namespace 4398063288320 obsoleted 1902 entries, compacted index: 1902, span: (None, None)
+2025-02-15T09:16:10.644091Z  INFO mito2::compaction::twcs: Compaction window for region 4398063288320(1024, 16777216) is not present, inferring from files: 3600
+2025-02-15T09:16:10.741017Z  INFO mito2::flush: Successfully flush memtables, region: 4398046511104(1024, 0), reason: Periodically, files: [FileId(09404a3f-1930-45aa-be9a-40d31ded8c98)], cost: 0.181682326s
+2025-02-15T09:16:10.741033Z  INFO mito2::flush: Applying RegionEdit { files_to_add: [FileMeta { region_id: 4398046511104(1024, 0), file_id: FileId(09404a3f-1930-45aa-be9a-40d31ded8c98), time_range: (1739608477584::Millisecond, 1739610969555::Millisecond), level: 0, file_size: 108307, available_indexes: [InvertedIndex], index_file_size: 28994, num_rows: 111749, num_row_groups: 2, sequence: Some(112449) }], files_to_remove: [], compaction_time_window: None, flushed_entry_id: Some(912), flushed_sequence: Some(112449) } to region 4398046511104(1024, 0)
+2025-02-15T09:16:10.745603Z  INFO mito2::flush: Successfully update manifest version to 27, region: 4398046511104(1024, 0), reason: Periodically
+2025-02-15T09:16:10.748763Z  INFO mito2::worker::handle_flush: Region 4398046511104(1024, 0) flush finished, tries to bump wal to 912
+2025-02-15T09:16:10.748866Z  INFO log_store::raft_engine::log_store: Namespace 4398046511104 obsoleted 906 entries, compacted index: 912, span: (Some(913), Some(917))
+2025-02-15T09:16:10.749381Z  INFO mito2::compaction::twcs: Compaction window for region 4398046511104(1024, 0) is not present, inferring from files: 3600
+2025-02-15T09:16:10.749413Z  INFO mito2::compaction::twcs: Enforcing max file num in window: 1739610000, active: Some(1739613600), max: 1, current: 2, max output size: None, filter delete: true
+2025-02-15T09:16:10.749508Z  INFO mito2::compaction::compactor: Compaction region 4398046511104(1024, 0) output [8d2de3e5-16f1-4717-87d0-7f83b8b9770b,c2b46665-3d8c-4c7a-be36-b6dc493752c0]-> b9f17a1c-cde1-4753-883d-7cdcebd6b9d9
+2025-02-15T09:16:10.813952Z  INFO mito2::compaction::task: Compacted SST files, region_id: 4398046511104(1024, 0), input: [FileMeta { region_id: 4398046511104(1024, 0), file_id: FileId(8d2de3e5-16f1-4717-87d0-7f83b8b9770b), time_range: (1739608462584::Millisecond, 1739608462584::Millisecond), level: 0, file_size: 16567, available_indexes: [InvertedIndex], index_file_size: 7053, num_rows: 585, num_row_groups: 1, sequence: Some(585) }, FileMeta { region_id: 4398046511104(1024, 0), file_id: FileId(c2b46665-3d8c-4c7a-be36-b6dc493752c0), time_range: (1739608468001::Millisecond, 1739608468001::Millisecond), level: 0, file_size: 11932, available_indexes: [InvertedIndex], index_file_size: 3957, num_rows: 115, num_row_groups: 1, sequence: Some(700) }], output: [FileMeta { region_id: 4398046511104(1024, 0), file_id: FileId(b9f17a1c-cde1-4753-883d-7cdcebd6b9d9), time_range: (1739608462584::Millisecond, 1739608468001::Millisecond), level: 1, file_size: 20240, available_indexes: [InvertedIndex], index_file_size: 8720, num_rows: 700, num_row_groups: 1, sequence: Some(700) }], window: Some(3600), waiter_num: 0, merge_time: 0.064401201s
+2025-02-15T09:16:10.819003Z  INFO mito2::request: Successfully compacted region: 4398046511104(1024, 0)
+2025-02-15T09:16:10.820270Z  INFO mito2::sst::file_purger: Successfully deleted SST file, file_id: 8d2de3e5-16f1-4717-87d0-7f83b8b9770b, region: 4398046511104(1024, 0)
+2025-02-15T09:16:10.820301Z  INFO mito2::sst::file_purger: Successfully deleted SST file, file_id: c2b46665-3d8c-4c7a-be36-b6dc493752c0, region: 4398046511104(1024, 0)
+2025-02-15T09:17:06.537605Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-15T09:18:06.538291Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-15T09:19:06.540163Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-15T09:20:06.541848Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-15T09:21:06.542982Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-15T09:22:06.543779Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-15T09:23:06.544660Z  INFO log_store::raft_engine::log_store: Successfully purged logstore files, namespaces need compaction: []
+2025-02-15T09:23:25.732919Z  INFO cmd: Received SIGTERM, shutting down
+2025-02-15T09:23:25.733024Z  INFO servers::http: Shutdown HTTP server
+2025-02-15T09:23:25.733039Z  INFO servers::server: Service HTTP_SERVER is shutdown!
+2025-02-15T09:23:25.733064Z  INFO servers::grpc: Shutdown grpc server
+2025-02-15T09:23:25.733072Z  INFO servers::server: Service GRPC_SERVER is shutdown!
+2025-02-15T09:23:25.733275Z  INFO servers::server: MySQL server is shutdown.
+2025-02-15T09:23:25.733286Z  INFO servers::server: Service MYSQL_SERVER is shutdown!
+2025-02-15T09:23:25.733298Z  INFO servers::server: Postgres server is shutdown.
+2025-02-15T09:23:25.733308Z  INFO servers::server: Service POSTGRES_SERVER is shutdown!
+2025-02-15T09:23:25.733888Z  INFO common_procedure::local: LocalManager is stopped.

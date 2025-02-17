@@ -14,7 +14,7 @@ services:
     networks:
       - back-net
     environment:
-      - SERVICES=s3,ec2,sns,cloudwatch,secretsmanager,sts,iam
+      - SERVICES=s3,ec2,sns,cloudwatch,logs,secretsmanager,sts,iam
       - DEBUG=${DEBUG-1 }
       - DATA_DIR=/tmp/localstack/data
       #- DOCKER_HOST=unix:///var/run/docker.sock #In my case i use podman. If you use docker uncomment this line
