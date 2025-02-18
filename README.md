@@ -112,6 +112,17 @@ aws --endpoint-url=http://localstack:4566 cloudwatch get-metric-statistics --nam
 
 # Check if was created the log-stream
 aws --endpoint-url=http://localstack:4566 logs describe-log-streams --log-group-name "obs-lab-logs" 
+
+# Create a fake log
+JSON_LOG=$(echo '[{"timestamp":' `date +%s` ', "message": "Este es un log de prueba"}]')
+aws --endpoint-url=http://localstack:4566 logs put-log-events \
+--log-group-name "obs-lab-logs" \
+--log-stream-name "stream-log" \
+--log-events "${JSON_LOG}"
+
+# Check if was created the log
+aws --endpoint-url=http://localstack:4566 logs get-log-events  --log-group-name "obs-lab-logs" --log-stream-name "stream-log"
+
 ```
 
 
@@ -124,8 +135,14 @@ its entrypoint.
 
 ## 4. Opentelemetry collector of logs and traces & remote write
 
-Working in progress
+AWS Localstack has a bug when you intend to get data logs, for this reason opentelemetry not works.
 
 ## 5. Grafana
 
-Working in progress
+Access into Grafana: http://localhost:3000
+
+Credentials default:
+
+admin / admin
+
+There is a basic dashboard to manage SQL data from GreptimeDB.

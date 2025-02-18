@@ -34,7 +34,7 @@ services:
       #- "/var/run/docker.sock:/var/run/docker.sock" #In my case i use podman. If you use docker uncomment this line
       - "${XDG_RUNTIME_DIR}/podman/podman.sock:/var/run/docker.sock" #Required in podman case: 'systemctl --user start podman.socket'
   
-  admtools: #Tools for connect and management AWS infraestructure
+  admtools: # Tools for connect and management AWS infraestructure
     image: imgtools:1.0
     build: ./containers/admtools
     container_name: admtools
@@ -55,7 +55,7 @@ services:
   #https://docs.greptime.com/getting-started/installation/greptimedb-standalone#docker
   #https://docs.greptime.com/greptimecloud/tutorials/monitor-host-metrics/prometheus/
 
-  greptime-lab:
+  greptime-lab: # DB NOSQL like SQL to store & handle metrics, traces, logs & events.
     image: greptime/greptimedb:v0.11.3
     build: ./containers/greptime-lab
     container_name: greptime-lab
@@ -71,9 +71,24 @@ services:
     volumes:
       - "${PWD}/containers/greptime-lab:/tmp/greptimedb"
 
-
+  grafana-lab: # Frontend of observability to make and see dashboards.
+    image: grafana/grafana-oss:11.5.1
+    container_name: grafana-lab
+    depends_on:
+      - localstack
+      - admtools
+      - promwrt-lab
+      - greptime-lab
+    user: "root"
+    ports:
+      - "3000:3000"
+    networks:
+      - back-net
+    environment:
+    volumes:
+      - "${PWD}/containers/grafana-lab/:/var/lib/grafana/"
   
-  promcol-lab:
+  promcol-lab: # Prometheus exporter to collect metrics data from AWS Cloudwatch
     image: prom/cloudwatch-exporter:v0.16.0
     container_name: promcol-lab
     depends_on:
@@ -92,7 +107,7 @@ services:
     volumes:
       - "${PWD}/containers/promcol-lab/config.yml:/config/config.yml"
 
-  promwrt-lab:
+  promwrt-lab: # Main Prometheus to scrape data and remote write toward greptime DB.
     image: prom/prometheus:v3.1.0
     container_name: promwrt-lab
     depends_on: 
@@ -119,7 +134,7 @@ networks:
 
   #otelcol-lab: #opentelemetry tool for the instrumentation of services
   # Has been disabled because the receiver is currently under development and is not included in the contrib 
-  #     release.
+  #     release. Either could not to receive logs because 'localstack' has a bug to read logs.
   #  image: otel/opentelemetry-collector-contrib:0.117.0
   #  # About receiver:
   #    # https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/awscloudwatchmetricsreceiver
