@@ -74,7 +74,7 @@ aws --endpoint-url=http://localstack:4566 cloudwatch describe-alarms
 
 ## Observability
 
-### 2. Prometheus collector & remote write
+### 2. Prometheus collector of metrics & remote write
 #### promcol-lab container
 The best way to get metrics from AWS Cloudwatch is by using Prometheus to achieve it. However, it has a bug when
 trying to fetch metrics from an EC2 instance on Localstack. But let's imagine it works.
@@ -106,17 +106,43 @@ aws --endpoint-url=http://localstack:4566 cloudwatch list-metrics
 
 # Get datapoints of ec2 metric
 aws --endpoint-url=http://localstack:4566 cloudwatch get-metric-statistics --namespace EC2 --metric-name CPUUtilization --period 60 --start-time 1737969900 --end-time 1737971574 --statistics Maximum --dimensions Name=InstanceId,Value=i-aa54280b70f78b651
+
+# Check if was created the log-group
+ aws --endpoint-url=http://localstack:4566 logs describe-log-groups --log-group-name-prefix "obs-lab-logs"
+
+# Check if was created the log-stream
+aws --endpoint-url=http://localstack:4566 logs describe-log-streams --log-group-name "obs-lab-logs" 
+
+# Create a fake log
+JSON_LOG=$(echo '[{"timestamp":' `date +%s` ', "message": "Este es un log de prueba"}]')
+aws --endpoint-url=http://localstack:4566 logs put-log-events \
+--log-group-name "obs-lab-logs" \
+--log-stream-name "stream-log" \
+--log-events "${JSON_LOG}"
+
+# Check if was created the log
+aws --endpoint-url=http://localstack:4566 logs get-log-events  --log-group-name "obs-lab-logs" --log-stream-name "stream-log"
+
 ```
 
 
 ### 3. GreptimeDB OSS
 
-Works but need updates, working in progress
+There's no need to do anything because it automatically creates a DB and tables when the container starts with
+its entrypoint.
 
-## 4. Opentelemetry
+> File --> ./containers/greptime-lab/entrypoint.sh
 
-Working in progress
+## 4. Opentelemetry collector of logs and traces & remote write
+
+AWS Localstack has a bug when you intend to get data logs, for this reason opentelemetry not works.
 
 ## 5. Grafana
 
-Working in progress
+Access into Grafana: http://localhost:3000
+
+Credentials default:
+
+admin / admin
+
+There is a basic dashboard to manage SQL data from GreptimeDB.

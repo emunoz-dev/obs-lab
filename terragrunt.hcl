@@ -38,6 +38,7 @@ provider "aws" {
     sts           = "http://localstack:4566"
     sns           = "http://localstack:4566"
     cloudwatch    = "http://localstack:4566"
+    logs          = "http://localstack:4566"
   
   }
 }

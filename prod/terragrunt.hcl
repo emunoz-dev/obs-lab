@@ -9,7 +9,9 @@ dependencies {
     # first create an ec2 instance, this has a vpc dependency
     "${path_relative_to_include()}/ec2_frontend",
     # then create a cloudwatch alarm, but this have a sns dependency
-    "${path_relative_to_include()}/cloudwatch"
+    "${path_relative_to_include()}/cloudwatch",
+    # The last step will create a log group and finally the dependency log stream
+    "${path_relative_to_include()}/log_stream"
   ]
 }
 
